@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# Whitelist GraphSmile +VQA
+!GraphSmile +VQA/
+!GraphSmile +VQA/**
+!.gitignore
+
+# Re-ignore generated files inside the allowed folder
+GraphSmile +VQA/results/*.pk
+GraphSmile +VQA/results/*.pkl
+GraphSmile +VQA/__pycache__/
+GraphSmile +VQA/.venv/
