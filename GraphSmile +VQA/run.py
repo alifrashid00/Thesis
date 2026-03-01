@@ -35,7 +35,7 @@ parser.add_argument('--port', default='15301', help='MASTER_PORT')
 parser.add_argument('--classify', default='emotion', help='sentiment, emotion')
 parser.add_argument('--lr',
                     type=float,
-                    default=0.00001,
+                    default=0.00002,
                     metavar='LR',
                     help='learning rate')
 parser.add_argument('--l2',
@@ -77,7 +77,9 @@ parser.add_argument(
     help='n_filter,n_padding; n_out = (n_in + 2*n_padding -n_filter)/stride +1',
 )
 
-parser.add_argument('--hidden_dim', type=int, default=256, help='hidden_dim')
+## orginal was 256
+
+parser.add_argument('--hidden_dim', type=int, default=512, help='hidden_dim')
 parser.add_argument(
     '--win',
     nargs='+',
@@ -93,7 +95,7 @@ parser.add_argument('--heter_n_layers',
 
 parser.add_argument('--drop',
                     type=float,
-                    default=0.3,
+                    default=0.4,
                     metavar='dropout',
                     help='dropout rate')
 
@@ -111,7 +113,7 @@ parser.add_argument(
     '--lambd',
     nargs='+',
     type=float,
-    default=[1.0, 1.0, 1.0],
+    default=[2.0, 1.0, 1.0],
     help='[loss_emotion, loss_sentiment, loss_shift]',
 )
 
@@ -123,7 +125,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 world_size = torch.cuda.device_count()
 os.environ['WORLD_SIZE'] = str(world_size)
 
-MELD_path = '/home/alif/thesis/Pre Processed DataSet/meld_vqa_features_2.7b.pkl'
+MELD_path = '/home/alif/thesis/Pre Processed DataSet/meld_vqa_features_2.7b_fixed.pkl'
 IEMOCAP_path = ''
 IEMOCAP4_path = ''
 CMUMOSEI7_path = ''
